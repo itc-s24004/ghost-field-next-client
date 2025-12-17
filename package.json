@@ -1,5 +1,6 @@
 {
   "name": "ghost-field-client",
+  "description": "カードゲーム・ゴーストフィールドのNext.jsクライアント",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -9,9 +10,12 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "ghost-field": "github:itc-s24004/ghost-field",
+    "js-type-val": "github:itc-s24004/js-type-val",
     "next": "16.0.8",
     "react": "19.2.1",
-    "react-dom": "19.2.1"
+    "react-dom": "19.2.1",
+    "socket.io-client": "^4.8.1"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",

@@ -1,0 +1,44 @@
+.status {
+    font-size: 24px;
+    color: var(--foreground);
+    margin-top: 20px;
+}
+
+.inputField {
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid var(--foreground);
+    border-radius: 4px;
+}
+
+.connectButton {
+    margin-top: 10px;
+    padding: 10px 15px;
+    font-size: 16px;
+    background-color: rgb(0, 123, 255);
+    color: var(--background);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.connectButton:hover {
+    background-color: rgb(0, 105, 217);
+    color: var(--color-background-hover);
+}
+
+.connectButton:disabled {
+    background-color: gray;
+    cursor: not-allowed;
+}
+
+.sendButton {
+    margin-left: 10px;
+    padding: 10px 15px;
+    font-size: 16px;
+    background-color: rgb(40, 167, 69);
+    color: var(--background);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}

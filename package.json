@@ -10,8 +10,6 @@
     "lint": "eslint"
   },
   "dependencies": {
-    "ghost-field": "github:itc-s24004/ghost-field",
-    "js-type-val": "github:itc-s24004/js-type-val",
     "next": "16.0.10",
     "react": "19.2.1",
     "react-dom": "19.2.1",

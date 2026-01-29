@@ -6,7 +6,7 @@
 [Vercel](https://vercel.com/)上での動作テスト
 
 ## タスク一覧
-- [ ] Socket.IOを用いた通信のテスト
+- [x] Socket.IOを用いた通信のテスト
 
 ## 今後の予定
 - [ ] UIの実装

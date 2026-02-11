@@ -1,0 +1,46 @@
+.tabMenu {
+    display: flex;
+    overflow-x: scroll;
+}
+
+.tabMenu::-webkit-scrollbar {
+    display: none;
+}
+
+.tabMenu.mobile {
+
+    align-items: center;
+
+    gap: 5px;
+    > .tabItem {
+        min-width: 100px;
+        width: 100px;
+        min-height: 40px;
+        height: 40px;
+        margin-top: 0;
+        border-radius: 20px;
+    }
+}
+
+
+.tabItem {
+    flex: 1;
+    text-align: center;
+    cursor: pointer;
+
+    white-space: nowrap;
+    text-overflow: ellipsis;
+
+    border-radius: 10px 10px 0px 0px;
+
+    background-color: rgb(77, 77, 77);
+    color: white;
+
+    /* margin-top: 20px; */
+    border: 2px solid #888888;
+}
+
+
+.tabItem.selected {
+    border: 2px solid #ffffff;
+}

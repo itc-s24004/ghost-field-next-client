@@ -1,0 +1,50 @@
+.button {
+    background-color: #898989;
+    color: black;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+
+    border: 2px solid #555555;
+
+    outline: 2px solid #777777;
+
+    font-weight: bold;
+
+
+    display: inline-block;
+    
+}
+
+.button:hover {
+    background-color: #777777;
+}
+
+
+
+
+
+.button.small {
+    padding: 4px 20px;
+    font-size: 20px;
+}
+
+.button.medium {
+    padding: 5px 25px;
+    font-size: 25px;
+}
+
+.button.large {
+    padding: 6px 30px;
+    font-size: 30px;
+}
+
+.button.extraLarge {
+    padding: 7px 35px;
+    font-size: 35px;
+}
+
+.button.mega {
+    padding: 8px 40px;
+    font-size: 40px;
+}

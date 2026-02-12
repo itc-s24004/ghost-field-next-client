@@ -1,0 +1,32 @@
+.hidden {
+    /* display: none; */
+}
+
+@keyframes fadeOut {
+    0% { opacity: 1; }
+    100% { opacity: 0; display: none; }
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+
+.fadeOut {
+    animation: fadeOut 0.5s forwards;
+    animation-delay: 1s;
+}
+
+.fadeOut.slow {
+    animation-delay: 2s;
+}
+
+.fadeIn {
+    animation: fadeIn 0.5s forwards;
+    animation-delay: 1s;
+}
+
+.fadeIn.slow {
+    animation: fadeIn 3s forwards;
+}

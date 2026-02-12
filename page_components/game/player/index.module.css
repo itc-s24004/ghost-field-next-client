@@ -1,0 +1,30 @@
+.player {
+    display: flex;
+
+    gap: 10px;
+
+    align-items: center;
+
+    background-color: #d0d0d0;
+    border: 2px solid #6f6f6f;
+}
+
+.player_name {
+    font-size: 20px;
+    font-weight: bold;
+    color: #000000;
+    background-color: #a0a0a0;
+    padding: 5px;
+    border-radius: 5px;
+
+    min-width: 100px;
+    text-align: center;
+}
+
+.player_status {
+    display: flex;
+    flex: 1;
+    
+    gap: 10px;
+    
+}

@@ -1,11 +1,25 @@
 import { MergeAttributes } from "@/libs/customAttribute";
 
-type Props = React.HTMLAttributes<HTMLDivElement>;
+import styles from "./index.module.css";
 
-export function UI_Player(props: Props) {
+type Props = React.HTMLAttributes<HTMLDivElement> &  {
+    data: {
+        hp: number;
+        mp: number;
+        gold: number;
+        name: string;
+    }
+};
+
+export function UI_Player({ data, ...props }: Props) {
     return (
-        <div {...MergeAttributes(props, {})}>
-            名前 | HP | MP | Gold | 状態異常 / アイコン | ゴーストアイコン
+        <div {...MergeAttributes(props, { className: styles.player })}>
+            <div className={styles.player_name}>{data.name}</div>
+            <div className={styles.player_status}>
+                <div className={styles.player_hp}>HP: {data.hp}</div>
+                <div className={styles.player_mp}>MP: {data.mp}</div>
+                <div className={styles.player_gold}>Gold: {data.gold}</div>
+            </div>
         </div>
     )
 }

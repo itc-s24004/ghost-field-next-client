@@ -1,0 +1,70 @@
+.container.normal {
+    background-color: #acacac;
+}
+.text.normal {
+    color: #c1c1c1;
+}
+
+
+.container.fire {
+    background-color: #8c1515;
+}
+.text.fire {
+    color: #8c1515;
+}
+
+
+.container.water {
+    background-color: #252575;
+}
+.text.water {
+    color: #252575;
+}
+
+
+.container.stone {
+    background-color: #565656;
+}
+.text.stone {
+    color: #565656;
+}
+
+
+.container.wind {
+    background-color: #697569;
+}
+.text.wind {
+    color: #8d9e8d;
+}
+
+
+.container.light {
+    background-color: #9d9d4c;
+}
+.text.light {
+    color: #ffff77;
+}
+
+
+.container.dark {
+    background-color: #6b178a;
+}
+.text.dark {
+    color: #6b178a;
+}
+
+
+.container.lightning {
+    background-color: #a8983c;
+}
+.text.lightning {
+    color: #ffd700;
+}
+
+
+.container.wood {
+    background-color: #228b22;
+}
+.text.wood {
+    color: #228b22;
+}

@@ -1,61 +1,84 @@
+import { MediaType } from "@/libs/client/responsive";
 import Image from "next/image";
 
+import styles from "./index.module.css"
+import { GhostFieldCore } from "ghost-field";
+
+import { MergeAttributes, MergeClassNames } from "@/libs/customAttribute";
+import { EX_Card } from "@/types";
+import { Card_Offensive } from "./offensive";
+import { Card_Defensive } from "./defensive";
+import { useState } from "react";
+import { Card_Detail } from "../card_detail";
+import { FloatingElement } from "@/page_components/floating";
+import { ElementContainer } from "../element/container";
+
 type Options = React.HTMLAttributes<HTMLDivElement> & {
-    data: unknown
-    mobile?: boolean;
+    media: MediaType;
+    data?: GhostFieldCore.GF_CardComponent<EX_Card>;
+
+    showDetail?: boolean;
+
+    _selected?: boolean;
+    _disabled?: boolean;
 };
 
 
-export function UI_Card(props: Options) {
-    return (
-        <div>
-            幅高さ固定
-            <div>
-                比率 50%
-                <Image src={""} width={150} height={150} alt=""></Image>
-            </div>
-            <div>
-                比率 50%
-                <div>
-                    比率 1
-                    カード名 / 背景は属性の色
-                </div>
-                <div>
-                    比率 5
-                    横並び
-                    <div>
-                        比率 50%
-                        防御コンポーネント詳細 / あれば
-                        防御:
-                        防御力
-                    </div>
-                    <div>
-                        比率 50%
-                        攻撃コンポーネント詳細 / あれば
-                        攻撃:
-                        ダメージ
-                        命中率
-                        回復:
-                        回復量
-                        等価交換:
-                        売却:
-                    </div>
-                </div>
-                <div>
-                    比率 2
-                    トラップコンポーネント詳細 / あれば
-                    復活:
-                    hp / mp / gold の回復量
-                    攻撃:
-                    ダメージ
-                    命中率
+export function UI_Card({media, data, showDetail=false, _selected, _disabled, ...props}: Options) {
+    const [show, setShow] = useState(false);
+    const [x, setX] = useState(0);
+    const [y, setY] = useState(0);
+    
 
-                </div>
-                <div>
-                    比率 1
-                    消費コスト / あれば | 売却価格
+    return (
+        <ElementContainer element={data?.element ?? GhostFieldCore.GF_Element.Normal} _container={true} {...MergeAttributes(props, {
+            className: MergeClassNames(
+                styles.card,
+                _selected ? styles.selected : "",
+                _disabled ? styles.disabled : ""
+            ),
+            onMouseOver(ev) {
+                setX(ev.clientX);
+                setY(ev.clientY);
+                setShow(true);
+            },
+            onMouseMove(ev) {
+                setX(ev.clientX);
+                setY(ev.clientY);
+            },
+            onMouseOut() {
+                setShow(false);
+            },
+            onTouchStart(ev) {
+                setX(ev.touches[0].clientX);
+                setY(ev.touches[0].clientY);
+                setShow(true);
+            },
+            onTouchEnd() {
+                setShow(false);
+            }
+
+        })}>
+            <div className={styles.card_imageContainer}>
+                <Image src={ data?.exData?.iconUrl ?? "/card.png"} width={200} height={200} alt="" className={styles.card_image}/>
+            </div>
+            <div className={styles.card_status}>
+                <div className={MergeClassNames(
+                    styles.card_description,
+                    // styles[data.element]
+                )}>
+                    <Card_Defensive component={data?.defensive}/>
+                    <Card_Offensive component={data?.offensive}/>
                 </div>
             </div>
-        </div>
+
+
+            {
+                showDetail && show &&
+                <FloatingElement x={x+10} y={y+10}>
+                    <Card_Detail data={data}/>
+                </FloatingElement>
+            }
+        </ElementContainer>
     )
 }

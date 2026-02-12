@@ -1,0 +1,63 @@
+.root {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+
+.container_wrapper {
+    display: flex;
+
+    width: 80%;
+    height: 80%;
+
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    display: flex;
+
+    width: 80%;
+    height: 80%;
+
+    padding: 10px;
+    margin: auto;
+
+    flex-wrap: wrap;
+    overflow-y: scroll;
+
+    justify-content:space-around;
+    align-items: center;
+
+    gap: 20px;
+
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.container.tablet {
+    .image {
+        width: 150px;
+        height: 150px;
+    }
+}
+
+.container.mobile {
+    .image {
+        width: 100px;
+        height: 100px;
+    }
+}
+
+
+.image {
+    display: inline-block;
+
+
+    width: 175px;
+    height: 175px;
+
+    background-color: black;
+
+    object-fit: contain;
+
+    cursor: pointer;
+}

@@ -1,0 +1,10 @@
+/* .fullscreen {
+    position: fixed;
+    top: 0;
+    right: 0;
+} */
+
+
+.fullscreen {
+    margin-left: auto;
+}

@@ -1,0 +1,77 @@
+.container {
+    display: flex;
+
+    flex: 1;
+
+    flex-direction: column;
+
+    height: 100%;
+
+    overflow: hidden;
+
+}
+
+
+.container.mobile {
+    display: block;
+    height: auto;
+    border: none;
+
+    overflow: visible;
+
+    margin-top: 16px;
+    margin-bottom: 16px;
+
+    
+    .openButton {
+        display: block;
+        margin-left: auto;
+        padding: 4px 8px;
+
+        font-size: 24px;
+        font-weight: 500;
+    }
+    .content {
+        display: none;
+        overflow: hidden;
+    }
+    .content.open {
+        display: flex;
+    }
+    .content.close {
+        display: none;
+    }
+}
+
+
+.top {
+    display: flex;
+    align-items: center;
+    
+    font-size: 24px;
+    font-weight: 600;
+
+    height: auto;
+    
+    justify-content: center;
+}
+
+.openButton {
+    display: none;
+
+}
+
+
+.content {
+    display: flex;
+    flex-direction: column;
+
+    flex: 1;
+
+    gap: 10px;
+
+    font-size: 24px;
+
+    overflow-y: scroll;
+    
+}

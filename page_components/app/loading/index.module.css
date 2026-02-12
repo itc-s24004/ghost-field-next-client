@@ -1,0 +1,146 @@
+.container {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    background-color: #2f0022;
+}
+
+
+.loading {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.spinner {
+    border: 8px solid #f3f3f3;
+    border-top: 8px solid #3498db;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.text {
+    margin-top: 16px;
+    font-size: 18px;
+    color: #c0c0c0;
+    animation: loading-text 1.5s infinite;
+}
+
+@keyframes loading-text {
+    0% { opacity: 0.2; }
+    20% { opacity: 1; }
+    100% { opacity: 0.2; }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+.bone {
+    position: fixed;
+    top: -5%;
+
+    /*アニメーション1*/
+    animation: roll 5s linear infinite;
+
+    background: url("/bone.png") no-repeat center center;
+    background-size: contain;
+}
+
+@keyframes roll {
+    0% {
+        width: 60px;
+        height: 60px;
+        transform:rotate(0deg);
+
+        top: 0;
+        scale: 0.35;
+    }
+    5% {
+        top: 5%;
+
+        scale: 3;
+    }
+    80% {
+        top: 80%;
+        scale: 1.5;
+    }
+    100% {
+        width: 60px;
+        height: 60px;
+        transform:rotate(180deg);
+        top: 100%;
+
+        scale: 0.35;
+    }
+}
+
+.bone:nth-child(1) {
+    animation-delay: 0s;
+    right: 10%;
+}
+
+.bone:nth-child(2) {
+    animation-delay: 2s;
+    right: 20%;
+}
+
+.bone:nth-child(3) {
+    animation-delay: 4s;
+    right: 30%;
+}
+
+.bone:nth-child(4) {
+    animation-delay: 1s;
+    right: 40%;
+}
+
+.bone:nth-child(5) {
+    animation-delay: 3s;
+    right: 50%;
+}
+
+.bone:nth-child(6) {
+    animation-delay: 5s;
+    right: 60%;
+}
+
+.bone:nth-child(7) {
+    animation-delay: 0s;
+    right: 70%;
+}
+
+.bone:nth-child(8) {
+    animation-delay: 2s;
+    right: 80%;
+}
+
+.bone:nth-child(9) {
+    animation-delay: 4s;
+    right: 90%;
+}
+
+.bone:nth-child(10) {
+    animation-delay: 1s;
+    right: 25%;
+}

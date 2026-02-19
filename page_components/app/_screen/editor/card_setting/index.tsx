@@ -231,7 +231,6 @@ export function Card_Setting({ media, open, imageUrls, data, onCardDataChange, o
                     imageUrls={imageUrls}
                     canCancel={true}
                     onSelect={(url) => {
-                        console.log("selected url:", url);
                         setShowSelectPopup(false);
                         if (data) {
                             const newEX: EX_Card = {...data.exData, iconUrl: url};

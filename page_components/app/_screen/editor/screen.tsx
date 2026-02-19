@@ -9,6 +9,8 @@ import { EX_Card } from "@/types";
 import { Card_Setting } from "./card_setting";
 import { FloatingElement } from "@/page_components/floating";
 import { UI_Card } from "@/page_components/game/card";
+import { ScreenMap } from "@/screen/screen";
+import { Screen_TestDraw } from "../testDraw/screen";
 
 
 type Props = AppScreen & {
@@ -17,6 +19,7 @@ type Props = AppScreen & {
     onUpdate(cards: GhostFieldCore.GF_CardComponent<EX_Card>[]): void;
 }
 
+type ScreenIds = "editor" | "test";
 
 export function Screen_Editor({ media, data, imageUrls, onUpdate, children, ...props }: Props) {
     const [open, setOpen] = useState(true);
@@ -24,12 +27,20 @@ export function Screen_Editor({ media, data, imageUrls, onUpdate, children, ...p
     const [cardIndex, setCardIndex] = useState<number>(0);
     const [cards, setCards] = useState<GhostFieldCore.GF_CardComponent<EX_Card>[]>(data);
 
-    return (
-        <Screen_Frame
+
+    const [screen, setScreen] = useState<ScreenIds>("editor");
+
+
+    const screens: ScreenMap<ScreenIds> = {
+        test: () => <Screen_TestDraw media={media} data={cards} _onClickBackward={() => setScreen("editor")} />,
+        editor: () => <Screen_Frame
             {...props}
 
             _top={
                 <>
+                    <Plain_Button size="small" onClick={() => setScreen("test")}>
+                        テスト画面へ移動
+                    </Plain_Button>
                     <FullscreenButton />
                     <Plain_Button size="small">
                         <label>
@@ -111,5 +122,11 @@ export function Screen_Editor({ media, data, imageUrls, onUpdate, children, ...p
 
 
         </Screen_Frame>
+    }
+    
+    
+
+    return (
+        screens[screen]()
     )
 }

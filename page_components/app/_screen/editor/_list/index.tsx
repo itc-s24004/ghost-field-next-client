@@ -67,7 +67,6 @@ export function Card_List({ media, data, onSelect, open, onStateChange, selected
                         filteredData.map((card, index) => (
                             <UI_Card key={index} media={media} data={card} showDetail={true} _selected={selectedCardId === card.id}
                                 onClick={() => {
-                                    console.log(card);
                                     onSelect?.(card.id);
                                 }}
                             />

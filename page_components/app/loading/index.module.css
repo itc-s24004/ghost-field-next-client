@@ -6,7 +6,7 @@
     justify-content: center;
     align-items: center;
     
-    background-color: #2f0022;
+    background-color: var(--background);
 }
 
 

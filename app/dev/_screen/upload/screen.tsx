@@ -38,6 +38,7 @@ export function Dev_Screen_Upload({ media, ...props}: Props) {
                                 id: "sample-card" as GhostFieldCore.GF_Card_ID,
                                 name: "サンプルカード",                            
                                 element: GhostFieldCore.GF_Element.Normal,
+                                cost: 1,
                                 price: 0,
                                 "isMagic": false,
                                 "weight": 1,

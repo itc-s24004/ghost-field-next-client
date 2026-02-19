@@ -5,7 +5,7 @@
     width: 100vw;
     height: 100vh;
 
-    background-color: #2f0022;
+    background-color: var(--background);
     overflow: hidden;
 }
 
@@ -20,6 +20,8 @@
     flex: 1;
 
     overflow: hidden;
+
+    background-color: var(--secondary-background);
 }
 
 .bottom {

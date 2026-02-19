@@ -1,6 +1,6 @@
 type Props = React.HTMLAttributes<HTMLDivElement> & {
-    x: number | string;
-    y: number | string;
+    x?: number | string;
+    y?: number | string;
     mouseEvent?: boolean;
 }
 

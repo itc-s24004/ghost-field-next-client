@@ -8,14 +8,14 @@ import { MergeAttributes, MergeClassNames } from "@/libs/customAttribute";
 import { EX_Card } from "@/types";
 import { Card_Offensive } from "./offensive";
 import { Card_Defensive } from "./defensive";
-import { useState } from "react";
+import { JSX, useState } from "react";
 import { Card_Detail } from "../card_detail";
 import { FloatingElement } from "@/page_components/floating";
 import { ElementContainer } from "../element/container";
 
 type Options = React.HTMLAttributes<HTMLDivElement> & {
     media: MediaType;
-    data?: GhostFieldCore.GF_CardComponent<EX_Card>;
+    data?: GhostFieldCore.GF_CardComponent<EX_Card> | GhostFieldCore.GF_Card<EX_Card>;
 
     showDetail?: boolean;
 
@@ -28,7 +28,9 @@ export function UI_Card({media, data, showDetail=false, _selected, _disabled, ..
     const [show, setShow] = useState(false);
     const [x, setX] = useState(0);
     const [y, setY] = useState(0);
-    
+
+    data = data instanceof GhostFieldCore.GF_Card ? data.component : data;
+
 
     return (
         <ElementContainer element={data?.element ?? GhostFieldCore.GF_Element.Normal} _container={true} {...MergeAttributes(props, {
@@ -53,6 +55,10 @@ export function UI_Card({media, data, showDetail=false, _selected, _disabled, ..
                 setX(ev.touches[0].clientX);
                 setY(ev.touches[0].clientY);
                 setShow(true);
+            },
+            onTouchMove(ev) {
+                setX(ev.touches[0].clientX);
+                setY(ev.touches[0].clientY);
             },
             onTouchEnd() {
                 setShow(false);

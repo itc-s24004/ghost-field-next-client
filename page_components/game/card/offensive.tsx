@@ -1,10 +1,11 @@
 import { GhostFieldCore } from "ghost-field"
+import { JSX } from "react";
 
 type Props = React.HTMLAttributes<HTMLDivElement> & {
     component: GhostFieldCore.GF_OffensiveComponent | undefined;
 }
 
-export function Card_Offensive({ component, ...props }: Props) {
+export function Card_Offensive({ component, ...props }: Props): JSX.Element {
     if (!component) return <></>;
 
 
@@ -21,8 +22,8 @@ export function Card_Offensive({ component, ...props }: Props) {
                     {component.healType}+{component.value}
                 </div>
             )
-        
-        default:
+        case "exchange":
+        case "sell":
             return <></>
     }
 }

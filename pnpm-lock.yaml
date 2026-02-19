@@ -12,8 +12,8 @@ importers:
         specifier: ^2.2.0
         version: 2.2.0
       ghost-field:
-        specifier: link:../ghost-field
-        version: link:../ghost-field
+        specifier: github:itc-s24004/ghost-field
+        version: https://codeload.github.com/itc-s24004/ghost-field/tar.gz/fd59f1d5f903152b09a47df2094d8b36545d1588
       next:
         specifier: 16.0.10
         version: 16.0.10(@babel/core@7.29.0)(react-dom@19.2.1(react@19.2.1))(react@19.2.1)
@@ -1175,6 +1175,14 @@ packages:
 
   get-tsconfig@4.13.6:
     resolution: {integrity: sha512-shZT/QMiSHc/YBLxxOkMtgSid5HFoauqCE3/exfsEcwg1WkeqjG+V40yBbBrsD+jW2HDXcs28xOfcbm2jI8Ddw==}
+
+  ghost-field-core@https://codeload.github.com/itc-s24004/ghost-field-core/tar.gz/b9474e5f3b49704bbe35c9a300e34b53b259337e:
+    resolution: {tarball: https://codeload.github.com/itc-s24004/ghost-field-core/tar.gz/b9474e5f3b49704bbe35c9a300e34b53b259337e}
+    version: 0.1.5
+
+  ghost-field@https://codeload.github.com/itc-s24004/ghost-field/tar.gz/fd59f1d5f903152b09a47df2094d8b36545d1588:
+    resolution: {tarball: https://codeload.github.com/itc-s24004/ghost-field/tar.gz/fd59f1d5f903152b09a47df2094d8b36545d1588}
+    version: 0.0.0
 
   glob-parent@5.1.2:
     resolution: {integrity: sha512-AOIgSQCepiJYwP3ARnGx+5VnTu2HBYdzbGP45eLw1vr3zB3vZLeyed1sC9hnbcOc9/SrMyM5RPQrkGz4aS9Zow==}
@@ -3311,6 +3319,17 @@ snapshots:
   get-tsconfig@4.13.6:
     dependencies:
       resolve-pkg-maps: 1.0.0
+
+  ghost-field-core@https://codeload.github.com/itc-s24004/ghost-field-core/tar.gz/b9474e5f3b49704bbe35c9a300e34b53b259337e: {}
+
+  ghost-field@https://codeload.github.com/itc-s24004/ghost-field/tar.gz/fd59f1d5f903152b09a47df2094d8b36545d1588:
+    dependencies:
+      ghost-field-core: https://codeload.github.com/itc-s24004/ghost-field-core/tar.gz/b9474e5f3b49704bbe35c9a300e34b53b259337e
+      socket.io-client: 4.8.3
+    transitivePeerDependencies:
+      - bufferutil
+      - supports-color
+      - utf-8-validate
 
   glob-parent@5.1.2:
     dependencies:

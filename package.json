@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "@vercel/blob": "^2.2.0",
-    "ghost-field": "link:../ghost-field",
+    "ghost-field": "github:itc-s24004/ghost-field",
     "next": "16.0.10",
     "react": "19.2.1",
     "react-dom": "19.2.1",

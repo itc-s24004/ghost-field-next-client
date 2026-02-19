@@ -1,5 +1,7 @@
 "use client";
 
+import { useEffect, useState } from "react";
+
 
 export type MediaSize = {
     minWidth: number;
@@ -27,10 +29,10 @@ type MediaSwitchType = "width" | "height" | "both";
  */
 export function ResponsiveMedia(
     size: MediaSize = {
-                minWidth:  600,
-                maxWidth: 1280,
-                minHeight:  400,
-                maxHeight:  768,
+        minWidth:  600,
+        maxWidth: 1280,
+        minHeight:  400,
+        maxHeight:  768,
     },
     switchType: MediaSwitchType, init: (media: MediaType) => void, onChange: (media: MediaType) => void
 ) {
@@ -74,6 +76,52 @@ export function ResponsiveMedia(
 
 
 
+
+
+
+
+
+type ResponsiveMediaHook = {
+    media: MediaType;
+}
+
+export function useResponsiveMedia(
+    init: (media: MediaType) => void,
+    size: MediaSize = {
+        minWidth:  600,
+        maxWidth: 1280,
+        minHeight:  400,
+        maxHeight:  768,
+    },
+    switchType: MediaSwitchType = "width"
+) {
+    const [media, setMedia] = useState<MediaType>("desktop");
+
+    useEffect(() => {
+        ResponsiveMedia(
+            size,
+            switchType,
+            (media) => {
+                setMedia(media);
+                init(media);
+            },
+            (media) => setMedia(media)
+        );
+    }, []);
+
+    return media;
+}
+
+
+
+
+
+
+
+
+
+
+
 export type ResponsiveAttributeData = {
     [key in MediaType]?: React.HTMLAttributes<HTMLElement>;
 }
@@ -87,7 +135,6 @@ export function ResponsiveAttribute(data: ResponsiveAttributeData, onChange: (at
     const width = window.innerWidth;
     const initialAttribute = width <= 768 ? mobile : (width > 768 && width <= 1024 ? tablet : desktop);
     onChange(initialAttribute);
-    console.log("Initial Responsive Attribute Set");
 
     window.addEventListener("resize", () => {
         const width = window.innerWidth;

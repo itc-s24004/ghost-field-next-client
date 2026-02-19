@@ -8,10 +8,22 @@
 
     z-index: 1000;
 
-    display: table;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
 }
 
 .content {
     display: table-cell;
     vertical-align: middle;
+}
+
+.opaque {
+    background-color: var(--background)
+}
+
+.blurred {
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(4px);
 }

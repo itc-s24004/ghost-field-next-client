@@ -3,16 +3,6 @@
 }
 
 
-.container_wrapper {
-    display: flex;
-
-    width: 80%;
-    height: 80%;
-
-    justify-content: center;
-    align-items: center;
-}
-
 .container {
     display: flex;
 
@@ -20,12 +10,11 @@
     height: 80%;
 
     padding: 10px;
-    margin: auto;
 
     flex-wrap: wrap;
     overflow-y: scroll;
 
-    justify-content:space-around;
+    justify-content: center;
     align-items: center;
 
     gap: 20px;

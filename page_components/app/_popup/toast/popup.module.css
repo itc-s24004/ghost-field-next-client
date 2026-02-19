@@ -1,0 +1,35 @@
+.container {
+    display: flex;
+    position: absolute;
+    top: 0;
+
+    z-index: 9999;
+    
+    
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+
+    animation: fade_in 3s forwards;
+}
+
+
+@keyframes fade_in {
+    0% {
+        opacity: 0;
+        top: 0
+    }
+    20% {
+        opacity: 1;
+        top: 1rem;
+    }
+    90% {
+        opacity: 1;
+        top: 1rem;
+    }
+    100% {
+        opacity: 0;
+        top: 0;
+    }
+}

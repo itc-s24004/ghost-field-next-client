@@ -40,7 +40,7 @@ const nextConfig: NextConfig = {
                 headers: [
                     {
                         key: "Access-Control-Allow-Origin",
-                        value: "*",
+                        value: "http://localhost:5000/",
                     },
                     {
                         key: "Access-Control-Allow-Methods",
@@ -51,7 +51,7 @@ const nextConfig: NextConfig = {
                         value: "Content-Type"
                     }
                 ]
-            }
+            },
         ]
     }
 };

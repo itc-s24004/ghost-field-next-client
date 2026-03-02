@@ -1,5 +1,10 @@
 import type { NextConfig } from "next";
 import path from "path";
+import { API_SERVER_URL } from "./libs/api/base";
+import { RemotePattern } from "next/dist/shared/lib/image-config";
+
+const vblob_id = process.env.BLOB_READ_WRITE_TOKEN?.split("_")[3].toLowerCase();
+
 
 const nextConfig: NextConfig = {
     turbopack: {//!!! 開発用パッケージのディレクトリを含むように指定
@@ -9,10 +14,20 @@ const nextConfig: NextConfig = {
         remotePatterns: [
             {
                 protocol: 'https',
-                hostname: 'knq2stxhcdd03qgq.public.blob.vercel-storage.com',
+                hostname: `knq2stxhcdd03qgq.public.blob.vercel-storage.com`,
                 port: '',
                 pathname: '/**',
-            }
+            },
+            ...((
+                vblob_id ? [
+                    {
+                        protocol: 'https',
+                        hostname: `${vblob_id}.public.blob.vercel-storage.com`,
+                        port: '',
+                        pathname: '/**',
+                    }
+                ] : []
+            ) as RemotePattern[])
         ],
     },
 
@@ -40,7 +55,7 @@ const nextConfig: NextConfig = {
                 headers: [
                     {
                         key: "Access-Control-Allow-Origin",
-                        value: "http://localhost:5000/",
+                        value: API_SERVER_URL.toString(),
                     },
                     {
                         key: "Access-Control-Allow-Methods",

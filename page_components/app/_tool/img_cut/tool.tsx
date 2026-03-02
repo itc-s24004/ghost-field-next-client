@@ -4,7 +4,7 @@ import styles from "./tool.module.css";
 
 
 type Props = React.HTMLAttributes<HTMLDivElement> & {
-    img: HTMLImageElement;
+    img: HTMLImageElement | null;
 
     size: {
         width: number;
@@ -43,6 +43,7 @@ export function Tool_Img_Cut({img, onResult, ...props}: Props) {
         
 
         ctx.clearRect(0, 0, canvas.width, canvas.height);
+        if (!img) return;
         ctx.drawImage(img, x, y, cut_width, cut_height, 0, 0, width, height);
 
         canvas.toBlob((blob) => {
@@ -60,6 +61,8 @@ export function Tool_Img_Cut({img, onResult, ...props}: Props) {
             <div className={styles.preview_container}>
                 <canvas ref={screen} width={width} height={height} className={styles.preview}
                     onMouseMove={(ev) => {
+                        if (!img) return;
+
                         const format = ev.altKey;
                         const resize = ev.ctrlKey;
 
@@ -126,19 +129,19 @@ export function Tool_Img_Cut({img, onResult, ...props}: Props) {
                 </label>
                 <label className={styles.control_label}>
                     切り取りX:{x}
-                    <input type="range" min={0} max={img.width - cut_width}  value={x} onChange={(e) => setX(Number(e.target.value))} />
+                    <input type="range" min={0} max={img?.width ?? 0 - cut_width}  value={x} onChange={(e) => setX(Number(e.target.value))} />
                 </label>
                 <label className={styles.control_label}>
                     切り取りY:{y}
-                    <input type="range" min={0} max={img.height - cut_height}  value={y} onChange={(e) => setY(Number(e.target.value))} />
+                    <input type="range" min={0} max={img?.height ?? 0 - cut_height}  value={y} onChange={(e) => setY(Number(e.target.value))} />
                 </label>
                 <label className={styles.control_label}>
                     切り取り幅:{cut_width}
-                    <input type="range" min={50} max={img.width}  value={cut_width} onChange={(e) => setCut_Width(Number(e.target.value))} />
+                    <input type="range" min={50} max={img?.width ?? 500}  value={cut_width} onChange={(e) => setCut_Width(Number(e.target.value))} />
                 </label>
                 <label className={styles.control_label}>
                     切り取り高さ:{cut_height}
-                    <input type="range" min={50} max={img.height}  value={cut_height} onChange={(e) => setCut_Height(Number(e.target.value))} />
+                    <input type="range" min={50} max={img?.height ?? 500}  value={cut_height} onChange={(e) => setCut_Height(Number(e.target.value))} />
                 </label>
                 <label className={styles.control_label}>
                     入力比率:{inputScale}

@@ -1,7 +1,7 @@
 import { AppScreen, Screen_Frame } from "@/screen/screen_frame";
 import { UI_Card } from "@/page_components/game/card";
 import { GhostFieldCore } from "ghost-field";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Tool_Img_Cut } from "@/page_components/app/_tool/img_cut/tool";
 
 
@@ -11,15 +11,21 @@ import { api_upload } from "../../api_upload/client";
 type Props = AppScreen & {};
 
 export function Dev_Screen_Upload({ media, ...props}: Props) {
-    const [imgUrl, setImgUrl] = useState<string | undefined>(undefined);
-
-
-    const [imgRef, setImgRef] = useState<HTMLImageElement | null>(null);
+    const imgRef = useRef<HTMLImageElement>(null);
+    const [img, setImg] = useState<HTMLImageElement | null>(null);
 
     
     const [imgCutResult, setImgCutResult] = useState<Blob | undefined>(undefined);
     const [cardImg, setCardImg] = useState<string | undefined>(undefined);
     
+    
+    useEffect(() => {
+        if (imgRef.current) {
+            setImg(imgRef.current);
+        } else {
+            setImg(null);
+        }
+    }, [imgRef]);
     
     return (
         <Screen_Frame
@@ -71,52 +77,60 @@ export function Dev_Screen_Upload({ media, ...props}: Props) {
                                 const files = ev.target.files;
                                 if (files && files.length > 0) {
                                     const file = files[0];
-                                    setImgUrl(URL.createObjectURL(file));
-                                } else {
-                                    setImgUrl(undefined);
+                                    const url = URL.createObjectURL(file);
+                                    const img = new Image();
+                                    img.src = url;
+                                    img.onload = () => {
+                                        setImg(img);
+                                    };
                                 }
                             }}/>
                         </label>
 
 
+                        <label className={styles.formLabel}>
+                            <button onClick={(ev) => {
+                                ev.preventDefault();
+                                ev.stopPropagation();
+                                if (!imgCutResult) {
+                                    alert("画像が切り取られていません");
+                                    return;
+                                }
+                                const url = URL.createObjectURL(imgCutResult);
+                                setCardImg(url);
+                            }}>
+                                画像をプレビュー
+                            </button>
+                        </label>
+
+
 
                         <label className={styles.formLabel}>
-                            <button type="submit">Upload</button>
+                            <button type="submit">アップロード</button>
                         </label>
 
                     </form>
-
-                    <div>
-                        <h2>使い方</h2>
-                        <p>ドラッグ: 画像の切り取る座標を移動</p>
-                        <p>Ctrl + ドラッグ: 画像の切り取るサイズを変更</p>
-                        <p>Alt + ドラッグ: 画像の切り取り座標とサイズを整数に丸める</p>
-                    </div>
+                </div>
+                <div className={styles.howto}>
+                    <h2>使い方</h2>
+                    <p>ドラッグ: 画像の切り取る座標を移動</p>
+                    <p>Ctrl + ドラッグ: 画像の切り取るサイズを変更</p>
+                    <p>Alt + ドラッグ: 画像の切り取り座標とサイズを整数に丸める</p>
                 </div>
                 
 
-
-
-
-                <img src={imgUrl} alt="" ref={setImgRef} className={styles.img} />
-
-                {
-                    imgRef &&
-                    <Tool_Img_Cut
-                        img={imgRef}
-                        size={
-                            {
-                                width:  150,
-                                height: 150
-                            }
+                <Tool_Img_Cut
+                    img={img}
+                    size={
+                        {
+                            width:  150,
+                            height: 150
                         }
-                        onResult={(blob) => {
-                            const url = URL.createObjectURL(blob);
-                            setImgCutResult(blob);
-                            setCardImg(url);
-                        }}
-                    />
-                }
+                    }
+                    onResult={(blob) => {
+                        setImgCutResult(blob);
+                    }}
+                />
             </div>
 
 
